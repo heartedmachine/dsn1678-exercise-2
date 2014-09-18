@@ -39,7 +39,6 @@ body {
 .title {
   margin: 0;
   padding: 1em 0;
-
   font-weight: normal;
   text-align: center;
 }
@@ -47,7 +46,6 @@ body {
 .chart {
   margin: 1.5 0;
   padding: 0 0 2em;
-
   list-style-type: none;
 }
 
@@ -57,7 +55,7 @@ body {
   margin: 0 0.5%;
   position: relative;
   width: 7.3%;
-  transition: background-color 100ms linear;
+  transition: background-color 250ms ease-in-out;
   background-color: rgba(204, 204, 204, 0);
 }
 
@@ -79,13 +77,13 @@ body {
   bottom: -1.7em;
   position: absolute;
   width: 100%;
-  transition: background-color 100ms linear;
+  transition: background-color 250ms ease-in-out;
   text-align: center;
 }
 
-.chart__label:hover,
-.chart__label:focus,
-.chart__label:active {
+.chart__item:hover .chart__label,
+.chart__item:focus .chart__label,
+.chart__item:active .chart__label {
   color: #fff;
 }
 
@@ -101,13 +99,18 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  transition: background-color 100ms linear;
+  transition: background-color 250ms ease-in-out;
   background-color: rgba(127, 219, 255, 0.6);
+  -webkit-animation: slide-up 300ms ease-out;
+  -ms-animation: slide-up 300ms ease-out;
+  -o-animation: slide-up 300ms ease-out;
+  -moz-animation: slide-up 300ms ease-out;
+  animation: slide-up 300ms ease-out;
 }
 
-.chart__bar:hover,
-.chart__bar:focus,
-.chart__bar:active {
+.chart__item:hover .chart__bar,
+.chart__item:focus .chart__bar,
+.chart__item:active .chart__bar {
   background-color: #82d7fd;
 }
 
@@ -123,9 +126,16 @@ body {
 
   background-color: #000;
   border-radius: 6px;
-  opacity: 1;
-
+  opacity: 0;
+  transition: opacity 250ms linear, top 250ms ease-in-out;
   text-align: center;
+}
+
+.chart__item:hover .chart__count,
+.chart__item:focus .chart__count,
+.chart__item:active .chart__count {
+  opacity: 1;
+  top:-3rem;
 }
 
 .chart__count::after {
@@ -140,4 +150,54 @@ body {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid #000;
+}
+
+@-webkit-keyframes slide-up {
+  0% {
+    top: 10em;
+  }
+100% {
+    top: 0;
+}
+
+}
+
+@-ms-keyframes slide-up {
+  0% {
+    top: 10em;
+  }
+100% {
+    top: 0;
+}
+
+}
+
+@-o-keyframes slide-up {
+  0% {
+    top: 10em;
+  }
+100% {
+    top: 0;
+}
+
+}
+
+@-moz-keyframes slide-up {
+  0% {
+    top: 10em;
+  }
+100% {
+    top: 0;
+}
+
+}
+
+@keyframes slide-up {
+  0% {
+    top: 10em;
+  }
+100% {
+    top: 0;
+}
+
 }
